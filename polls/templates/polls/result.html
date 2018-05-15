@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-Поздравляю! ты добрался до етого момента!!! ты что то сделал САМ!!!!!!!!!! Надеюсь, когда ты всепомнишь про ету страницу, ты разберешься, как ето делается
-</body>
-</html>
+<h1>{{ question.question_text }}</h1> <!-- заголоаок -->
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>              <!-- кнопка -->
